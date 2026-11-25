@@ -9,6 +9,9 @@ import os
 
 OUTPUT_PATH = "/output/entry.txt"
 
+# Competition gate: the entry must be 1-280 characters (one line).
+MAX_ENTRY_CHARS = 280
+
 def get_line() -> str:
     """Return the entry line: the inbox, reimagined as a coffee order."""
     return (
@@ -27,7 +30,7 @@ def validate(line: str) -> None:
         raise ValueError("entry must have no leading/trailing whitespace")
     if len(line.splitlines()) != 1:
         raise ValueError("entry must be exactly one line")
-    if not 1 <= len(line) <= 280:
+    if not 1 <= len(line) <= MAX_ENTRY_CHARS:
         raise ValueError("entry line must be 1-280 characters")
     if not line.strip():
         raise ValueError("entry must not be only whitespace")
